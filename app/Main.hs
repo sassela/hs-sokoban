@@ -8,10 +8,11 @@ picture = maze
 data Tile = Wall | Ground | Storage | Box | Blank
 
 maze :: Picture
-maze = translated (fromIntegral x) (fromIntegral y) (drawTile (mazeTileAt x y))
+maze = placeTile x y
   where
-      x = 0 :: Integer
-      y = 0 :: Integer
+    placeTile x y = translated (fromIntegral x) (fromIntegral y) (drawTile (mazeTileAt x y))
+    x = 0 :: Integer
+    y = 0 :: Integer
 
 mazeTileAt :: Integer -> Integer -> Tile
 mazeTileAt x y
