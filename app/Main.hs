@@ -8,11 +8,14 @@ picture = maze
 data Tile = Wall | Ground | Storage | Box | Blank
 
 maze :: Picture
-maze = placeTile x y
-  where
-    placeTile x y = translated (fromIntegral x) (fromIntegral y) (drawTile (mazeTileAt x y))
-    x = 0 :: Integer
-    y = 0 :: Integer
+maze = pictures $ do
+    x <- [-10..10]
+    y <- [-10..10]
+    pure $ placeTile x y
+    where
+        placeTile :: Integer -> Integer -> Picture
+        placeTile x y =
+            translated (fromIntegral x) (fromIntegral y) (drawTile (mazeTileAt x y))
 
 mazeTileAt :: Integer -> Integer -> Tile
 mazeTileAt x y
