@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: b3338044d434f0c5d39cd9721a0ade7af04ecf1aabe49b83794bf3321b84a38e
+-- hash: 3e3dacd2ee05a525e29d55620f1b67a27b16c7a7d5adb21deea48d739f412cdc
 
 name:           hs-sokoban
 version:        0.1.0.0
@@ -34,17 +34,20 @@ library
       src
   build-depends:
       base >=4.7 && <5
+    , codeworld-api
   default-language: Haskell2010
 
 executable hs-sokoban-exe
   main-is: Main.hs
   other-modules:
+      Complete
       Paths_hs_sokoban
   hs-source-dirs:
       app
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , codeworld-api
     , hs-sokoban
   default-language: Haskell2010
 
@@ -58,5 +61,6 @@ test-suite hs-sokoban-test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , codeworld-api
     , hs-sokoban
   default-language: Haskell2010
