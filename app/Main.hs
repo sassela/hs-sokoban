@@ -3,9 +3,15 @@ module Main where
 import           CodeWorld
 
 picture :: Picture
-picture = drawTile $ mazeTileAt 0 0
+picture = maze
 
 data Tile = Wall | Ground | Storage | Box | Blank
+
+maze :: Picture
+maze = translated (fromIntegral x) (fromIntegral y) (drawTile (mazeTileAt x y))
+  where
+      x = 0 :: Integer
+      y = 0 :: Integer
 
 mazeTileAt :: Integer -> Integer -> Tile
 mazeTileAt x y
