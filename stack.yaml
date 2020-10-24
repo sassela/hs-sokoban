@@ -17,7 +17,7 @@
 #
 # resolver: ./custom-snapshot.yaml
 # resolver: https://example.com/snapshots/2018-01-01.yaml
-resolver: lts-6.35
+resolver: lts-14.00
 
 # User packages to be built.
 # Various formats can be used as shown in the example below.
@@ -39,8 +39,16 @@ packages:
 # - git: https://github.com/commercialhaskell/stack.git
 #   commit: e7b331f14bcffb8367cd58fbfc8b40ec7642100a
 #
-# extra-deps: []
-
+extra-deps:
+  - blank-canvas-0.7.3
+  - ref-tf-0.4.0.2
+  - reflex-0.6.4.1
+  - constraints-extras-0.3.0.2@sha256:013b8d0392582c6ca068e226718a4fe8be8e22321cc0634f6115505bf377ad26,1853
+  - dependent-map-0.3.1.0@sha256:f33391e51264aab38b11d581bb8d2f7c6fc9fcf012bdbb6122708c23b3360b2a,1657
+  - dependent-sum-0.6.2.0@sha256:bff37c85b38e768b942f9d81c2465b63a96076f1ba006e35612aa357770807b6,1856
+  - kansas-comet-0.4@sha256:72330f1953abed85fc306ace742d975296a3b3a806c9db90dc793161b60c2846,1737
+  - monoidal-containers-0.6.0.1@sha256:83d67afa030925aa4d2c6a14b5b65c530fab0ae5fdc84faa2099910cadf34f19,2583
+  - patch-0.0.3.1@sha256:f14acf2eea8c83be57398106cec549c476577a947a7f856e6aa71dc561d58ca9,2308
 # Override default flag values for local packages and extra-deps
 # flags: {}
 

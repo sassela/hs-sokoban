@@ -3,10 +3,73 @@
 # For more information, please see the documentation at:
 #   https://docs.haskellstack.org/en/stable/lock_files
 
-packages: []
+packages:
+- completed:
+    hackage: blank-canvas-0.7.3@sha256:575c5e27632ce1e73cdc3bac00c520df4f3eeb400d26121ba30e66814af8234a,5093
+    pantry-tree:
+      size: 1495
+      sha256: 2b85e8588e98c8b2a04061c5a1cdda1e987ef31d8a3e21b18357e4de26c3e389
+  original:
+    hackage: blank-canvas-0.7.3
+- completed:
+    hackage: ref-tf-0.4.0.2@sha256:69de3550250e0cd69f45d080359cb314a9487c915024349c75b78732bbee9332,1134
+    pantry-tree:
+      size: 211
+      sha256: fc5a4a35b4c782a33f452c1dc66ffa8ddbf321e2db369bd8823c796f0d4d8c7f
+  original:
+    hackage: ref-tf-0.4.0.2
+- completed:
+    hackage: reflex-0.6.4.1@sha256:43e64b9fe2dd471007173aa1c4e02effcae3cafeb3ea972edf1ea65476cf321d,11192
+    pantry-tree:
+      size: 4461
+      sha256: a6ec3e337a799d5981d9ae38f2c7418ac9daba22c3e49f5b9f5b8a908c9ed84e
+  original:
+    hackage: reflex-0.6.4.1
+- completed:
+    hackage: constraints-extras-0.3.0.2@sha256:013b8d0392582c6ca068e226718a4fe8be8e22321cc0634f6115505bf377ad26,1853
+    pantry-tree:
+      size: 594
+      sha256: 3ce1012bfb02e4d7def9df19ce80b8cd2b472c691b25b181d9960638673fecd1
+  original:
+    hackage: constraints-extras-0.3.0.2@sha256:013b8d0392582c6ca068e226718a4fe8be8e22321cc0634f6115505bf377ad26,1853
+- completed:
+    hackage: dependent-map-0.3.1.0@sha256:f33391e51264aab38b11d581bb8d2f7c6fc9fcf012bdbb6122708c23b3360b2a,1657
+    pantry-tree:
+      size: 551
+      sha256: e49230ff3bb1ddc9bef79c22b080ec04a5bb7829808d52df910f734d1cffdddc
+  original:
+    hackage: dependent-map-0.3.1.0@sha256:f33391e51264aab38b11d581bb8d2f7c6fc9fcf012bdbb6122708c23b3360b2a,1657
+- completed:
+    hackage: dependent-sum-0.6.2.0@sha256:bff37c85b38e768b942f9d81c2465b63a96076f1ba006e35612aa357770807b6,1856
+    pantry-tree:
+      size: 474
+      sha256: ad3fbed5104f9ee9c8082c9dcc8ade847674e3053572533e8d26ad1a866f1107
+  original:
+    hackage: dependent-sum-0.6.2.0@sha256:bff37c85b38e768b942f9d81c2465b63a96076f1ba006e35612aa357770807b6,1856
+- completed:
+    hackage: kansas-comet-0.4@sha256:72330f1953abed85fc306ace742d975296a3b3a806c9db90dc793161b60c2846,1737
+    pantry-tree:
+      size: 383
+      sha256: b93fb744a9979ae6e8638a02711f9222cfd1d0d7d8559a188ba8d87f80ec9313
+  original:
+    hackage: kansas-comet-0.4@sha256:72330f1953abed85fc306ace742d975296a3b3a806c9db90dc793161b60c2846,1737
+- completed:
+    hackage: monoidal-containers-0.6.0.1@sha256:83d67afa030925aa4d2c6a14b5b65c530fab0ae5fdc84faa2099910cadf34f19,2583
+    pantry-tree:
+      size: 569
+      sha256: 8c6c5c36f05c6831511141910219fc29ab0d71187f9cafc15bdcc28c998ff591
+  original:
+    hackage: monoidal-containers-0.6.0.1@sha256:83d67afa030925aa4d2c6a14b5b65c530fab0ae5fdc84faa2099910cadf34f19,2583
+- completed:
+    hackage: patch-0.0.3.1@sha256:f14acf2eea8c83be57398106cec549c476577a947a7f856e6aa71dc561d58ca9,2308
+    pantry-tree:
+      size: 977
+      sha256: d959d6d59fa8b46876c0eaa4f2736017b3e2d4dbbc5ee6a6bdd7635c7d4c1510
+  original:
+    hackage: patch-0.0.3.1@sha256:f14acf2eea8c83be57398106cec549c476577a947a7f856e6aa71dc561d58ca9,2308
 snapshots:
 - completed:
-    size: 428787
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/6/35.yaml
-    sha256: f2ce58e96ad78750c355afc8fcd0bfbd06c8e1381050c59bc5c934577ebef872
-  original: lts-6.35
+    size: 523443
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/14/0.yaml
+    sha256: 283773e7120f5446d961eab35ea95c9af9c24187cc178537bd29273200a05171
+  original: lts-14.0
