@@ -5,13 +5,11 @@ import           CodeWorld
 picture :: Picture
 picture = storage
 
+data Tile = Wall | Ground | Storage | Box | Blank
+
 wall :: Picture
 wall = coloured brown (solidRectangle 1 1)
 
--- Exercise:
--- Using `wall` as an example, create 3 more variables to represent tiles on a map: ground, storage and box.
--- Each variable should be of type Picture and have a width and height of 1.
--- Tip: replace `picture = wall` with `picture = <variable>` to preview each tile.
 ground :: Picture
 ground = coloured green (solidRectangle 1 1)
 
