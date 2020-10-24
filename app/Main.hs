@@ -5,6 +5,8 @@ import           CodeWorld
 picture :: Picture
 picture = maze
 
+data Coordinates = Coords Integer Integer
+data Direction = U | R | D | L
 data Tile = Wall | Ground | Storage | Box | Blank
 
 maze :: Picture
