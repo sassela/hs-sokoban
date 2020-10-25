@@ -12,6 +12,9 @@ data Tile = Wall | Ground | Storage | Box | Blank
 initialCoords :: Coordinates
 initialCoords = Coords 0 0
 
+updateCoords :: Event -> Coordinates -> Coordinates
+updateCoords event coords = coords
+
 adjacentCoord :: Direction -> Coordinates -> Coordinates
 adjacentCoord R (Coords x y) = Coords (x+1) y
 -- example: handle U, L, D inputs
