@@ -16,6 +16,10 @@ initialCoords = Coords 0 0
 updateCoords :: Event -> Coordinates -> Coordinates
 updateCoords (KeyPress key) coords
     | key == "Up"    = adjacentCoord U coords
+    -- exercise: handle R, D, L keypress inputs
+    | key == "Right" = adjacentCoord R coords
+    | key == "Down"  = adjacentCoord D coords
+    | key == "Left"  = adjacentCoord L coords
 updateCoords _ coords      = coords
 
 drawCoords :: Coordinates -> Picture
@@ -26,7 +30,6 @@ placeAt (Coords x y) pic = translated (fromIntegral x) (fromIntegral y) pic
 
 adjacentCoord :: Direction -> Coordinates -> Coordinates
 adjacentCoord R (Coords x y) = Coords (x+1) y
--- example: handle U, L, D inputs
 adjacentCoord U (Coords x y) = Coords  x   (y+1)
 adjacentCoord L (Coords x y) = Coords (x-1) y
 adjacentCoord D (Coords x y) = Coords  x   (y-1)
