@@ -2,6 +2,7 @@
 module Main where
 
 import           CodeWorld
+import           CodeWorld.Sketches (sketchedRobot)
 
 picture :: Picture
 picture = maze
@@ -9,6 +10,9 @@ picture = maze
 data Coordinates = Coords Integer Integer
 data Direction = U | R | D | L
 data Tile = Wall | Ground | Storage | Box | Blank
+
+player :: Picture
+player = scaled 0.2 0.2 sketchedRobot
 
 initialCoords :: Coordinates
 initialCoords = Coords 0 0
