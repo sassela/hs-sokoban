@@ -67,4 +67,4 @@ box :: Picture
 box = coloured yellow (solidRectangle 0.7 0.7) & ground
 
 main :: IO ()
-main = drawingOf picture
+main = activityOf initialCoords updateCoords drawCoords
