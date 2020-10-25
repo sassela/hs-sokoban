@@ -13,14 +13,16 @@ maze :: Picture
 maze = pictures $ do
     x <- [-10..10]
     y <- [-10..10]
-    pure $ placeTile x y
+    pure $ placeTile (Coords x y)
     where
-        placeTile :: Integer -> Integer -> Picture
-        placeTile x y =
-            translated (fromIntegral x) (fromIntegral y) (drawTile (mazeTileAt x y))
+        placeTile :: Coordinates -> Picture
+        placeTile coords =
+            placeAt coords (drawTile (mazeTileAt coords))
+        placeAt :: Coordinates -> Picture -> Picture
+        placeAt (Coords x y) pic = translated (fromIntegral x) (fromIntegral y) pic
 
-mazeTileAt :: Integer -> Integer -> Tile
-mazeTileAt x y
+mazeTileAt :: Coordinates -> Tile
+mazeTileAt (Coords x y)
     | abs x > 4  || abs y > 4  = Blank
     | abs x == 4 || abs y == 4 = Wall
     | x ==  2 && y <= 0        = Wall
