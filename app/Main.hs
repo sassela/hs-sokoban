@@ -9,6 +9,9 @@ data Coordinates = Coords Integer Integer
 data Direction = U | R | D | L
 data Tile = Wall | Ground | Storage | Box | Blank
 
+initialCoords :: Coordinates
+initialCoords = Coords 0 0
+
 adjacentCoord :: Direction -> Coordinates -> Coordinates
 adjacentCoord R (Coords x y) = Coords (x+1) y
 -- example: handle U, L, D inputs
