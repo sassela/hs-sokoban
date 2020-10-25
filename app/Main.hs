@@ -9,6 +9,9 @@ data Coordinates = Coords Integer Integer
 data Direction = U | R | D | L
 data Tile = Wall | Ground | Storage | Box | Blank
 
+adjacentCoord :: Direction -> Coordinates -> Coordinates
+adjacentCoord R (Coords x y) = Coords (x+1) y
+
 maze :: Picture
 maze = pictures $ do
     x <- [-10..10]
