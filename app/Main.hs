@@ -15,6 +15,12 @@ initialCoords = Coords 0 0
 updateCoords :: Event -> Coordinates -> Coordinates
 updateCoords event coords = coords
 
+drawCoords :: Coordinates -> Picture
+drawCoords coords = placeAt coords maze
+
+placeAt :: Coordinates -> Picture -> Picture
+placeAt (Coords x y) pic = translated (fromIntegral x) (fromIntegral y) pic
+
 adjacentCoord :: Direction -> Coordinates -> Coordinates
 adjacentCoord R (Coords x y) = Coords (x+1) y
 -- example: handle U, L, D inputs
@@ -31,8 +37,6 @@ maze = pictures $ do
         placeTile :: Coordinates -> Picture
         placeTile coords =
             placeAt coords (drawTile (mazeTileAt coords))
-        placeAt :: Coordinates -> Picture -> Picture
-        placeAt (Coords x y) pic = translated (fromIntegral x) (fromIntegral y) pic
 
 mazeTileAt :: Coordinates -> Tile
 mazeTileAt (Coords x y)
