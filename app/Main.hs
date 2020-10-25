@@ -1,3 +1,4 @@
+{-# LANGUAGE OverloadedStrings #-}
 module Main where
 
 import           CodeWorld
@@ -13,7 +14,9 @@ initialCoords :: Coordinates
 initialCoords = Coords 0 0
 
 updateCoords :: Event -> Coordinates -> Coordinates
-updateCoords event coords = coords
+updateCoords (KeyPress key) coords
+    | key == "Up"    = adjacentCoord U coords
+updateCoords _ coords      = coords
 
 drawCoords :: Coordinates -> Picture
 drawCoords coords = placeAt coords maze
