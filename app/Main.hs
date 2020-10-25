@@ -11,6 +11,10 @@ data Tile = Wall | Ground | Storage | Box | Blank
 
 adjacentCoord :: Direction -> Coordinates -> Coordinates
 adjacentCoord R (Coords x y) = Coords (x+1) y
+-- example: handle U, L, D inputs
+adjacentCoord U (Coords x y) = Coords  x   (y+1)
+adjacentCoord L (Coords x y) = Coords (x-1) y
+adjacentCoord D (Coords x y) = Coords  x   (y-1)
 
 maze :: Picture
 maze = pictures $ do
