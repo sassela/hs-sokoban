@@ -21,6 +21,35 @@ drawState (State playerPosition boxPositions) =
     drawBoxes boxPositions &
     maze
 
+-- updateState :: Event -> State -> State
+-- updateState (KeyPress key) coords
+--     | key == "Up"    = adjacentCoord U coords
+--     -- exercise: handle R, D, L keypress inputs
+--     | key == "Right" = adjacentCoord R coords
+--     | key == "Down"  = adjacentCoord D coords
+--     | key == "Left"  = adjacentCoord L coords
+-- updateState _ coords      = coords
+
+movePlayer :: Direction -> State -> State
+movePlayer direction (State playerPosition boxPositions)
+  = case currentMaze to of
+    Box -> case currentMaze beyond of
+      Ground  -> movedState
+      Storage -> movedState
+      _       -> didn'tMove
+    Ground -> movedState
+    Storage -> movedState
+    _ -> didn'tMove
+  where to          = adjacentCoord direction playerPosition
+        beyond      = adjacentCoord direction to
+        currentMaze = mazeWithBoxes boxPositions
+        movedState  = State to movedBx
+        movedBx     = map (moveFromTo to beyond) boxPositions
+        didn'tMove  = State playerPosition boxPositions -- Yes, ' may be part of an identifier
+
+moveFromTo :: Coordinates -> Coordinates -> Coordinates -> Coordinates
+moveFromTo c1 c2 c | c1 == c = c2
+                   | otherwise      = c
 player :: Picture
 player = scaled 0.2 0.2 sketchedRobot
 
