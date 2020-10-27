@@ -7,7 +7,7 @@ import           CodeWorld.Sketches (sketchedRobot)
 picture :: Picture
 picture = maze
 
-data Coordinates = Coords Integer Integer
+data Coordinates = Coords Integer Integer deriving Eq
 data Direction = U | R | D | L
 data State = State Coordinates [Coordinates]
 data Tile = Wall | Ground | Storage | Box | Blank
@@ -64,13 +64,18 @@ maze = pictures $ do
         placeTile coords =
             placeAt coords (drawTile (mazeTileAt coords))
 
+mazeWithBoxes :: [Coordinates] -> Coordinates -> Tile
+mazeWithBoxes [] c'        = mazeTileAt  c'
+mazeWithBoxes (c:cs) c'
+  | c == c' = Box
+  | otherwise  = mazeWithBoxes cs c'
+
 mazeTileAt :: Coordinates -> Tile
 mazeTileAt (Coords x y)
     | abs x > 4  || abs y > 4  = Blank
     | abs x == 4 || abs y == 4 = Wall
     | x ==  2 && y <= 0        = Wall
     | x ==  3 && y <= 0        = Storage
-    | x >= -2 && y == 0        = Box
     | otherwise                = Ground
 
 drawTile :: Tile -> Picture
