@@ -12,11 +12,14 @@ data Direction = U | R | D | L
 data State = State Coordinates [Coordinates]
 data Tile = Wall | Ground | Storage | Box | Blank
 
+initialState :: State
+initialState = State initialCoords initialBoxes
+
 player :: Picture
 player = scaled 0.2 0.2 sketchedRobot
 
 initialCoords :: Coordinates
-initialCoords = Coords 0 0
+initialCoords = Coords 0 (-1)
 
 initialBoxes :: [Coordinates]
 initialBoxes = [Coords (-2) 0, Coords (-1) 0, Coords 0 0, Coords 1 0]
