@@ -9,6 +9,7 @@ picture = maze
 
 data Coordinates = Coords Integer Integer
 data Direction = U | R | D | L
+data State = State Coordinates [Coordinates]
 data Tile = Wall | Ground | Storage | Box | Blank
 
 player :: Picture
