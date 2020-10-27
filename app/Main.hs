@@ -18,6 +18,9 @@ player = scaled 0.2 0.2 sketchedRobot
 initialCoords :: Coordinates
 initialCoords = Coords 0 0
 
+initialBoxes :: [Coordinates]
+initialBoxes = [Coords (-2) 0, Coords (-1) 0, Coords 0 0, Coords 1 0]
+
 updateCoords :: Event -> Coordinates -> Coordinates
 updateCoords (KeyPress key) coords
     | key == "Up"    = adjacentCoord U coords
