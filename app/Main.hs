@@ -21,14 +21,13 @@ drawState (State playerPosition boxPositions) =
     drawBoxes boxPositions &
     maze
 
--- updateState :: Event -> State -> State
--- updateState (KeyPress key) coords
---     | key == "Up"    = adjacentCoord U coords
---     -- exercise: handle R, D, L keypress inputs
---     | key == "Right" = adjacentCoord R coords
---     | key == "Down"  = adjacentCoord D coords
---     | key == "Left"  = adjacentCoord L coords
--- updateState _ coords      = coords
+updateState :: Event -> State -> State
+updateState (KeyPress key) state
+    | key == "Up"    = movePlayer U state
+    | key == "Right" = movePlayer R state
+    | key == "Down"  = movePlayer D state
+    | key == "Left"  = movePlayer L state
+updateState _ state      = state
 
 movePlayer :: Direction -> State -> State
 movePlayer direction (State playerPosition boxPositions)
