@@ -15,6 +15,12 @@ data Tile = Wall | Ground | Storage | Box | Blank
 initialState :: State
 initialState = State initialCoords initialBoxes
 
+drawState :: State -> Picture
+drawState (State playerPosition boxPositions) =
+    placeAt playerPosition player &
+    drawBoxes boxPositions &
+    maze
+
 player :: Picture
 player = scaled 0.2 0.2 sketchedRobot
 
@@ -87,4 +93,4 @@ box :: Picture
 box = coloured yellow (solidRectangle 0.7 0.7) & ground
 
 main :: IO ()
-main = drawingOf (drawBoxes initialBoxes)
+main = drawingOf (drawState initialState)
