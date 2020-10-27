@@ -21,6 +21,9 @@ initialCoords = Coords 0 0
 initialBoxes :: [Coordinates]
 initialBoxes = [Coords (-2) 0, Coords (-1) 0, Coords 0 0, Coords 1 0]
 
+drawBoxes :: [Coordinates] -> Picture
+drawBoxes coords = pictures (map (\c -> placeAt c (drawTile Box)) coords)
+
 updateCoords :: Event -> Coordinates -> Coordinates
 updateCoords (KeyPress key) coords
     | key == "Up"    = adjacentCoord U coords
@@ -81,4 +84,4 @@ box :: Picture
 box = coloured yellow (solidRectangle 0.7 0.7) & ground
 
 main :: IO ()
-main = activityOf initialCoords updateCoords drawCoords
+main = drawingOf (drawBoxes initialBoxes)
