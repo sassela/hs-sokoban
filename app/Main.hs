@@ -126,4 +126,4 @@ box :: Picture
 box = coloured yellow (solidRectangle 0.7 0.7) & ground
 
 main :: IO ()
-main = drawingOf (drawState initialState)
+main = activityOf initialState updateState drawState
