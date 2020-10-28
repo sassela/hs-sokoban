@@ -2,7 +2,6 @@
 module Main where
 
 import           CodeWorld
-import           CodeWorld.Sketches (sketchedRobot)
 
 picture :: Picture
 picture = maze
@@ -50,7 +49,7 @@ moveFromTo :: Coordinates -> Coordinates -> Coordinates -> Coordinates
 moveFromTo c1 c2 c | c1 == c = c2
                    | otherwise      = c
 player :: Picture
-player = scaled 0.2 0.2 sketchedRobot
+player = solidCircle 0.3
 
 initialCoords :: Coordinates
 initialCoords = Coords 0 (-1)
