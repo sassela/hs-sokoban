@@ -1,2 +1,4 @@
 {
+    "haskell.ghcMod.check": "onChange",
+    "haskell.ghcMod.executablePath": "stack"
 }

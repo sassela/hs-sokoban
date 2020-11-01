@@ -48,6 +48,7 @@ movePlayer direction (State playerPosition boxPositions)
 moveFromTo :: Coordinates -> Coordinates -> Coordinates -> Coordinates
 moveFromTo c1 c2 c | c1 == c = c2
                    | otherwise      = c
+                   
 player :: Picture
 player = solidCircle 0.3
 
@@ -73,7 +74,7 @@ drawCoords :: Coordinates -> Picture
 drawCoords coords = placeAt coords maze
 
 placeAt :: Coordinates -> Picture -> Picture
-placeAt (Coords x y) pic = translated (fromIntegral x) (fromIntegral y) pic
+placeAt (Coords x y) = translated (fromIntegral x) (fromIntegral y)
 
 adjacentCoord :: Direction -> Coordinates -> Coordinates
 adjacentCoord R (Coords x y) = Coords (x+1) y
@@ -82,10 +83,9 @@ adjacentCoord L (Coords x y) = Coords (x-1) y
 adjacentCoord D (Coords x y) = Coords  x   (y-1)
 
 maze :: Picture
-maze = pictures $ do
-    x <- [-10..10]
-    y <- [-10..10]
-    pure $ placeTile (Coords x y)
+maze = pictures $ do 
+  x <- [-10 .. 10]
+  placeTile . Coords x <$> [-10 .. 10]
     where
         placeTile :: Coordinates -> Picture
         placeTile coords =
@@ -123,6 +123,9 @@ storage = coloured white (thickCircle 0.1 0.2) & ground
 
 box :: Picture
 box = coloured yellow (solidRectangle 0.7 0.7) & ground
+
+-- game :: world -> (Event -> world -> world) -> (world -> Picture) -> IO ()
+-- game = undefined
 
 main :: IO ()
 main = activityOf initialState updateState drawState

@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 3e3dacd2ee05a525e29d55620f1b67a27b16c7a7d5adb21deea48d739f412cdc
+-- hash: d323447abdb99b6c29db2d376b670e064bf46f4b02558f4f7ac70eb819812a2c
 
 name:           hs-sokoban
 version:        0.1.0.0
@@ -44,7 +44,7 @@ executable hs-sokoban-exe
       Paths_hs_sokoban
   hs-source-dirs:
       app
-  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N -Wall
   build-depends:
       base >=4.7 && <5
     , codeworld-api

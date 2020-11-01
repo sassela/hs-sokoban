@@ -208,7 +208,7 @@ data Interaction world = Interaction
 
 
 runInteraction :: Interaction s -> IO ()
-runInteraction (Interaction state0 step handle draw)
+runInteraction (Interaction state0 _step handle draw)
   = activityOf state0 handle draw
 
 -- Resetable interactions
