@@ -14,6 +14,60 @@ data State =
   State Coordinates
         [Coordinates]
 
+data SSState world
+  = StartScreen
+  | Running world
+
+data Activity world =
+  Activity world
+           (Event -> world -> world)
+           (world -> Picture)
+
+startScreenActivityOf ::
+     world -> (Event -> world -> world) -> (world -> Picture) -> IO ()
+startScreenActivityOf state0 handle draw = activityOf state0' handle' draw'
+  where
+    state0' = StartScreen
+    handle' (KeyPress key) StartScreen
+      | key == " " = Running state0
+    handle' _ StartScreen = StartScreen
+    handle' e (Running s) = Running (handle e s)
+    draw' StartScreen = startScreen
+    draw' (Running s) = draw s
+
+resetable :: Activity s -> Activity s
+resetable (Activity state0 handle draw) = Activity state0 handle' draw
+  where
+    handle' (KeyPress key) _
+      | key == "Esc" = state0
+    handle' e s = handle e s
+
+withStartScreen :: Activity s -> Activity (SSState s)
+withStartScreen (Activity state0 handle draw) = Activity state0' handle' draw'
+  where
+    state0' = StartScreen
+    handle' (KeyPress key) StartScreen
+      | key == " " = Running state0
+    handle' _ StartScreen = StartScreen
+    handle' e (Running s) = Running (handle e s)
+    draw' StartScreen = startScreen
+    draw' (Running s) = draw s
+
+gameWon :: [Coordinates] -> Bool
+gameWon cs = all isOnStorage cs
+
+isOnStorage :: Coordinates -> Bool
+isOnStorage c =
+  case (mazeTileAt c []) of
+    Storage -> True
+    _       -> False
+
+runActivity :: Activity s -> IO ()
+runActivity (Activity state0 handle draw) = activityOf state0 handle draw
+
+sokoban :: Activity State
+sokoban = Activity initialState updateState drawState
+
 type Coordinates = (Double, Double)
 
 data Tile
@@ -23,19 +77,34 @@ data Tile
   | Box
   | Blank
 
+resetableActivityOf ::
+     world -> (Event -> world -> world) -> (world -> Picture) -> IO ()
+resetableActivityOf = undefined
+
+startScreen :: Picture
+startScreen = scaled 3 3 (lettering "Sokoban!")
+
 initialState :: State
 initialState = State initialCoords initialBoxes
 
+showWin :: [Coordinates] -> Picture
+showWin cs
+  | gameWon cs = scaled 2 2 (lettering "You won!")
+  | otherwise = blank
+
 drawState :: State -> Picture
 drawState (State playerPosition boxPositions) =
-  pictures [placeAt player playerPosition, maze boxPositions]
+  pictures
+    [showWin boxPositions, placeAt player playerPosition, maze boxPositions]
 
 updateState :: Event -> State -> State
-updateState (KeyPress "Up") state    = movePlayer U state
+updateState _ (State c bx)
+  | gameWon bx = (State c bx)
+updateState (KeyPress "Up") state = movePlayer U state
 updateState (KeyPress "Right") state = movePlayer R state
-updateState (KeyPress "Down") state  = movePlayer D state
-updateState (KeyPress "Left") state  = movePlayer L state
-updateState _ state                  = state
+updateState (KeyPress "Down") state = movePlayer D state
+updateState (KeyPress "Left") state = movePlayer L state
+updateState _ state = state
 
 movePlayer :: Direction -> State -> State
 movePlayer direction (State playerPosition boxPositions) =
@@ -118,4 +187,4 @@ box :: Picture
 box = coloured yellow (solidRectangle 0.7 0.7) & ground
 
 main :: IO ()
-main = activityOf initialState updateState drawState
+main = runActivity (resetable (withStartScreen sokoban))
